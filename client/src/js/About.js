@@ -4,6 +4,7 @@ import "../page/cs/about.css";
 import { useNavigate } from 'react-router-dom';
 const About = () => {
   const navigate = useNavigate();
+  const [userData , setUserData] = useState({});
   const callAboutPage = async()=>{
     try{
       const res = await fetch('/about',{
@@ -17,6 +18,7 @@ const About = () => {
       });
       const data = await res.json();
       console.log(data);
+      setUserData(data);
       if(!res.status === 200){
         const error = new Error(res.error);
         throw error;
@@ -56,8 +58,8 @@ const About = () => {
       </div>
       <div className='rightside_details'>
         <div className='profile_head'>
-            <h3>Ritik Kumar</h3>
-            <h4>Web Development</h4>
+            <h3>{userData.name}</h3>
+            <h4>{userData.work}</h4>
         </div>
         <div className='profile_bottom'>
             <div className='profile_row'>
@@ -65,7 +67,7 @@ const About = () => {
                 <label>User Id</label>
                 </div>
                 <div className="profile_row_right">
-                <p>2390857689</p>
+                <p>{userData._id}</p>
                 </div>
             </div>
             <div className='profile_row'>
@@ -73,7 +75,7 @@ const About = () => {
                 <label>Name</label>
                 </div>
                 <div className="profile_row_right">
-                <p>Ritik Kumar</p>
+                <p>{userData.name}</p>
                 </div>
             </div>
             <div className='profile_row'>
@@ -81,7 +83,7 @@ const About = () => {
                 <label>Email</label>
                 </div>
                 <div className="profile_row_right">
-                <p>ritikkumar1770@gmail.com</p>
+                <p>{userData.email}</p>
                 </div>
             </div>
             <div className='profile_row'>
@@ -89,7 +91,7 @@ const About = () => {
                 <label>Phone</label>
                 </div>
                 <div className="profile_row_right">
-                <p>954060979</p>
+                <p>{userData.phone}</p>
                 </div>
             </div>
             <div className='profile_row'>
@@ -97,7 +99,7 @@ const About = () => {
                 <label>Profession</label>
                 </div>
                 <div className="profile_row_right">
-                <p>Web Developer</p>
+                <p>{userData.work}</p>
                 </div>
             </div>
         </div>

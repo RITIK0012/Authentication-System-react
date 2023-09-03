@@ -11,7 +11,7 @@ const Navbar = () => {
       <label className="logo">DesignX</label>
       <ul>
         <li><a className="active" href="/">Home</a></li>
-        <li><a href="/signup">Signup</a></li>
+        <li><a href="/signform">Signup</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="#">Feedback</a></li>
