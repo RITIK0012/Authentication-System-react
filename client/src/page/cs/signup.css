@@ -1,0 +1,137 @@
+.container_signup{
+    height:calc(100vh - 80px);
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signupform{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width:700px;
+    height: 600px;
+    padding: 15px ;
+}
+.leftside_signup{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex:5;
+}
+.signup {
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 25px;
+    cursor: pointer;
+    
+}
+.user_data{
+    flex:9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.rightside_signup{
+    flex:5;
+    height: 70%;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rightside_data{
+    height:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.persons{
+    height:350px;
+    width:350px;
+}
+@media (max-width: 319px){
+    .leftside_signup{
+        width:50%;
+        height:100%
+    }
+    .rightside_signup{
+        display: none;
+    }
+    .signupform{
+        width: 250px;
+        height: 500px;
+    }
+    .signup{
+        font-weight: bold;
+        font-size: 18px;
+    }
+}
+@media (min-width: 320px) and (max-width: 480px){
+    .leftside_signup{
+        width:50%;
+        height:100%
+    }
+    .rightside_signup{
+        display: none;
+    }
+    .signupform{
+        width: 300px;
+        height: 500px;
+    }
+    .signup{
+        font-weight: bold;
+        font-size: 18px;
+    }
+}
+@media (min-width: 481px) and (max-width: 600px){
+    
+    .signupform{
+        width: 500px;
+        height: 450px;
+    }
+    .signup{
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .persons{
+        height: 200px;
+        width: 200px;
+    }
+}
+@media (min-width: 601px) and (max-width: 768px){
+    .leftside_signup{
+        width:50%;
+        height:100%
+    }
+    .rightside_signup{
+        display: none;
+    }
+    .signupform{
+        width: 600px;
+        height: 550px;
+    }
+    .signup{
+        font-weight: bold;
+        font-size: 20px;
+    }
+}
+@media (min-width: 769px) and (max-width: 1025px){
+    .signupform{
+        width: 600px;
+        height: 480px;
+    }
+    .signup{
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .persons{
+        width:300px;
+        height: 300px;
+    }
+}

@@ -1,0 +1,83 @@
+.profile{
+    height:calc(100vh - 80px);
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user_details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width:700px;
+    height: 600px;
+}
+.leftside_details{
+    padding-top: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width:50%;
+    height: 100%;
+}
+.profile_container {
+    width: 200px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+    overflow: hidden; /* Clip the image if it's larger than the container */
+    border: 1px solid #ccc; /* Optional border for the container */
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+.user_pic{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.input_field{
+    display: flex;
+    margin-left: auto;
+}
+.input_field {
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+    overflow: hidden; /* Hide the "No file chosen" text */
+    white-space: nowrap; /* Prevent line breaks in label */
+  }
+  
+  
+.rightside_details{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: column;
+    width:50%;
+    height: 100%;
+}
+.profile_head{
+    line-height: 50px;
+}
+
+.profile_bottom{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+.profile_row{
+    padding: 10px 0px;
+    width:100%;
+    display: flex;
+   
+}
+.profile_row_left{
+    display: flex;
+    flex:1;
+}
+.profile_row_right{
+    display:flex;
+    flex:2;
+}
