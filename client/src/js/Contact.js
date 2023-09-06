@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useEffect, useState} from "react";
 import "../page/cs/contact.css";
 import { TextField } from "@mui/material";
 import Box from '@mui/material/Box';
@@ -21,6 +21,32 @@ const useStyles = makeStyles(theme=>({
 
 function Contact(){
     const classes=useStyles();
+    const [userData , setUserData] = useState({});
+    const userContact = async()=>{
+    try{
+      const res = await fetch('/getdata',{
+        method:"GET",
+        headers: {
+          "Content-Type": "application/json"
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      setUserData(data);
+      if(!res.status === 200){
+        const error = new Error(res.error);
+        throw error;
+      }
+
+    }
+    catch(err){
+      console.log(err);
+    }
+    }
+    useEffect(()=> {
+    userContact();
+     },[]);
+
     
     return(
         <div className="contact_page">
@@ -52,13 +78,13 @@ function Contact(){
                 <form className="user_info">
                     <div className="user_identity">
                         <div className="user_name">
-                        <TextField id="outlined-basic" label="Your Name" variant="filled" size="small"/>
+                        <TextField value={userData.name} id="outlined-basic" placeholder="Name" variant="filled" size="small"/>
                         </div>
                         <div className="user_email">
-                        <TextField id="outlined-basic" label="Email" variant="filled" size="small"/>
+                        <TextField value={userData.email} id="outlined-basic" placeholder="Email" variant="filled" size="small"/>
                         </div>
                         <div className="user_email">
-                        <TextField id="outlined-basic" label="Phone Number" variant="filled" size="small"/>
+                        <TextField value={userData.phone} id="outlined-basic" placeholder="Phone Number" variant="filled" size="small"/>
                         </div>
                     </div>
                     <div className="user_message">
