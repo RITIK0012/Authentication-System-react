@@ -72,6 +72,10 @@
     width:100%;
     padding:30px;
 }
+.user_email{
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
 .user_message{
     padding-left: 30px;
     padding-right: 30px;
@@ -272,6 +276,7 @@
     .user_email{
         margin-bottom: 20px;
     }
+    
     .user_message{
         padding-bottom: 20px;
     }

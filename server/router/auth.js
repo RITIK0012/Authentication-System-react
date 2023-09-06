@@ -114,8 +114,26 @@ router.get('/about',authenticate ,(req,res)=>{
 
 //get user data for contact us and home page
 router.get('/getdata',authenticate, (req,res)=>{
-    console.log(`Hello my about`);
+    console.log(`Hello my contact`);
     res.send(req.rootUser);
-})
+});
 
+router.post('/contact',authenticate,async(req,res)=>{
+    try{
+        const {name,email,phone,message}=req.body;
+        if(!name || !email || !phone || !message){
+            console.log("Error in contact form");
+            return res.json({error:"Please filled the contact form"});
+        }
+        const userContact = await User.findOne({_id: req.userID});
+        if(userContact){
+            const userMessage = await userContact.addMessage(name,email,phone,message);
+            await userContact.save();
+            res.status(201).json({message: "user contact successfully"});
+        }
+    }   
+    catch(error){
+        console.log(error);
+    }
+});
 module.exports = router;

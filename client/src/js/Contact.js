@@ -21,7 +21,8 @@ const useStyles = makeStyles(theme=>({
 
 function Contact(){
     const classes=useStyles();
-    const [userData , setUserData] = useState({});
+    const [userData , setUserData] = useState({name:"",email:"",phone:"",message:""});
+
     const userContact = async()=>{
     try{
       const res = await fetch('/getdata',{
@@ -32,7 +33,7 @@ function Contact(){
       });
       const data = await res.json();
       console.log(data);
-      setUserData(data);
+      setUserData({...userData,name: data.name,email: data.email,phone: data.phone });
       if(!res.status === 200){
         const error = new Error(res.error);
         throw error;
@@ -44,10 +45,37 @@ function Contact(){
     }
     }
     useEffect(()=> {
-    userContact();
-     },[]);
+      userContact();
+    },[]);
 
-    
+    //we are storing data in states
+    const handleInputs = (e)=>{
+        const name = e.target.name;
+        const value = e.target.value;
+        setUserData({...userData,[name]:value});
+    }
+    //send the data to backend
+    const contactForm = async(e)=>{
+        e.preventDefault();
+        const {name , email, phone , message} = userData;
+        const res = await fetch('contact',{
+            method: "POST",
+            headers: {
+              "Content-Type" : "application/json"
+            },
+            body:JSON.stringify({
+              name, email, phone,message
+            })
+        })
+        const data = await res.json();
+        if(!data){
+            console.log("message not send");
+        }
+        else{
+            alert("Message Send");
+            setUserData({...userData, message:""});
+        }
+    }
     return(
         <div className="contact_page">
             <div className="admin_contact">
@@ -75,16 +103,16 @@ function Contact(){
             </div>
             <div className="message">
                 <div className="get_in_touch">Get in Touch</div>
-                <form className="user_info">
+                <form method="POST" className="user_info">
                     <div className="user_identity">
                         <div className="user_email">
-                        <TextField value={userData.name} id="outlined-basic" placeholder="Name" variant="filled" size="small"/>
+                        <TextField onChange={handleInputs} name="name" value={userData.name} id="outlined-basic" placeholder="Name" variant="filled" size="small"/>
                         </div>
                         <div className="user_email">
-                        <TextField value={userData.email} id="outlined-basic" placeholder="Email" variant="filled" size="small"/>
+                        <TextField onChange={handleInputs} name="email" value={userData.email} id="outlined-basic" placeholder="Email" variant="filled" size="small"/>
                         </div>
                         <div className="user_email">
-                        <TextField value={userData.phone} id="outlined-basic" placeholder="Phone Number" variant="filled" size="small"/>
+                        <TextField onChange={handleInputs} name="phone" value={userData.phone} id="outlined-basic" placeholder="Phone Number" variant="filled" size="small"/>
                         </div>
                     </div>
                     <div className="user_message">
@@ -93,10 +121,11 @@ function Contact(){
                       label="Message"
                       multiline
                       rows={4}
+                      onChange={handleInputs} name="message" value={userData.message}
                       />
                     </div>
                     <div className="collect_info">
-                       <Button className={classes.messagebutton} sx={{ color: 'black', borderColor: 'black' }} variant="outlined" size="medium" >
+                       <Button onClick={contactForm} className={classes.messagebutton} sx={{ color: 'black', borderColor: 'black' }} variant="outlined" size="medium" >
                            Send Message
                        </Button>
                     </div>
