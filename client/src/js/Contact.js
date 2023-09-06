@@ -77,7 +77,7 @@ function Contact(){
                 <div className="get_in_touch">Get in Touch</div>
                 <form className="user_info">
                     <div className="user_identity">
-                        <div className="user_name">
+                        <div className="user_email">
                         <TextField value={userData.name} id="outlined-basic" placeholder="Name" variant="filled" size="small"/>
                         </div>
                         <div className="user_email">
