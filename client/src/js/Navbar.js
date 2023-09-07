@@ -14,7 +14,7 @@ const Navbar = () => {
         <li><a href="/signform">Signup</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
-        <li><a href="#">Feedback</a></li>
+        <li><a href="/logout">Logout</a></li>
       </ul>
     </nav>
   );

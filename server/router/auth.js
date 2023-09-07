@@ -136,4 +136,12 @@ router.post('/contact',authenticate,async(req,res)=>{
         console.log(error);
     }
 });
+
+
+router.get('/logout' ,(req,res)=>{
+    console.log(`Hello my Logout page`);
+    res.clearCookie('jwtoken',{path:'/'});
+    res.status(200).send('User Logout');
+});
+
 module.exports = router;
