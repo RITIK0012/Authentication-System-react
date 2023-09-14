@@ -88,5 +88,6 @@ a.active,a:hover{
   }
   #check:checked ~ ul{
     left: 0;
+    z-index: 1000;
   }
 }
